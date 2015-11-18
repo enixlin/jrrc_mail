@@ -29,7 +29,7 @@ public class http_request {
 		this.url = url;
 	}
 	
-	
+	//
 	//提交请求
 	public void sendRequest(){
 		URL url=new URL(this.url);
