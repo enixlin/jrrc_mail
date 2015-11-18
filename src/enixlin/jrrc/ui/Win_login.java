@@ -1,6 +1,7 @@
 package enixlin.jrrc.ui;
 
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class win_login {
+public class Win_login {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -25,7 +26,7 @@ public class win_login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					win_login window = new win_login();
+					Win_login window = new Win_login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +38,7 @@ public class win_login {
 	/**
 	 * Create the application.
 	 */
-	public win_login() {
+	public Win_login() {
 		initialize();
 	}
 
@@ -73,16 +74,19 @@ public class win_login {
 		JButton btnNewButton = new JButton("\u767B\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Win_main win_main=new Win_main();
+				win_main.main(null);
+				
 				// 检查用户名和密码是否填好
-				String strLoginName=textField.getText();
-				String strPassWord=textField_1.getText();
-				if (strLoginName=="" || strPassWord=="") {
-					
-				}else{
-					
-				}
-				//生成新的HttpClient
-				http_request http_request=new http_request();
+				// String strLoginName=textField.getText();
+				// String strPassWord=textField_1.getText();
+				// if (strLoginName=="" || strPassWord=="") {
+				//
+				// }else{
+				//
+				// }
+				// //生成新的HttpClient
+				// http_request http_request=new http_request();
 				
 			}
 		});

@@ -1,4 +1,4 @@
-ackage enixlin.jrrc.net;
+package enixlin.jrrc.net;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -32,9 +32,8 @@ public class http_request {
 	//
 	//提交请求
 	public void sendRequest(){
-		URL url=new URL(this.url);
-		URLConnection urlConnection=url.openConnection();
-		urlConnection.
+
+		
 		
 	}
 		
