@@ -69,7 +69,7 @@ public class Win_login {
 		textField_1.setBounds(108, 108, 156, 21);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-
+//
 		// 登录按键按下
 		JButton btnNewButton = new JButton("\u767B\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
