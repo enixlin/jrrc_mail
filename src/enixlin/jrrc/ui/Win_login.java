@@ -8,10 +8,30 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import enixlin.jrrc.net.http_request;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.message.BufferedHeader;
 
+import enixlin.jrrc.net.http_request;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+import javax.security.auth.login.LoginContext;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Win_login {
@@ -27,7 +47,7 @@ public class Win_login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
 					Win_login window = new Win_login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -71,20 +91,57 @@ public class Win_login {
 		textField_1.setBounds(108, 108, 156, 21);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-//
+		//
 		// 登录按键按下
 		JButton btnNewButton = new JButton("\u767B\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Win_main win_main=new Win_main();
-				win_main.main(null);
-				
-
-				
+				String loginName = textField.getText();
+				String passWord = textField_1.getText();
+				try {
+					passWord = new BASE64Encoder().encode(passWord.getBytes("utf-8"));
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				ArrayList<BasicNameValuePair> params = new ArrayList<>();
+				params.add(new BasicNameValuePair("loginName", loginName));
+				params.add(new BasicNameValuePair("passWord", passWord));
+				URI url = null;
+				try {
+					url = new URI("http://www.126.com");
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+				login(url, params);
 			}
 		});
 
 		btnNewButton.setBounds(171, 154, 93, 23);
 		frame.getContentPane().add(btnNewButton);
+	}
+
+	private void login(URI url, ArrayList<BasicNameValuePair> params) {
+		CloseableHttpClient client = HttpClients.createDefault();
+		try {
+			HttpPost post = new HttpPost(url);
+			// 请求参数
+			post.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
+			CloseableHttpResponse response = client.execute(post);
+			HttpEntity entity = response.getEntity();
+			InputStream is = entity.getContent();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+			String row = "";
+			String content = "";
+			while ((row = reader.readLine()) != null) {
+				content = content + row;
+			}
+
+			System.out.println(content);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
