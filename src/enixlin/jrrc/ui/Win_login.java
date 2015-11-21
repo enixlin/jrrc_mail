@@ -6,6 +6,7 @@ import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import enixlin.jrrc.net.http_request;
 
@@ -26,6 +27,7 @@ public class Win_login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Win_login window = new Win_login();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -77,16 +79,7 @@ public class Win_login {
 				Win_main win_main=new Win_main();
 				win_main.main(null);
 				
-				// 检查用户名和密码是否填好
-				// String strLoginName=textField.getText();
-				// String strPassWord=textField_1.getText();
-				// if (strLoginName=="" || strPassWord=="") {
-				//
-				// }else{
-				//
-				// }
-				// //生成新的HttpClient
-				// http_request http_request=new http_request();
+
 				
 			}
 		});
