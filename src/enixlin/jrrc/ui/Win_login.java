@@ -96,6 +96,7 @@ public class Win_login {
 		JButton btnNewButton = new JButton("\u767B\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+	
 				String loginName = textField.getText();
 				String passWord = textField_1.getText();
 				try {
@@ -112,12 +113,13 @@ public class Win_login {
 					url = new URI("http://www.126.com");
 				} catch (URISyntaxException e) {
 					e.printStackTrace();
+					//
 				}
 				login(url, params);
 			}
 		});
 
-		btnNewButton.setBounds(171, 154, 93, 23);
+		btnNewButton.setBounds(131, 153, 93, 23);
 		frame.getContentPane().add(btnNewButton);
 	}
 
