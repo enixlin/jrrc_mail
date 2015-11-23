@@ -36,7 +36,9 @@ import java.awt.event.ActionEvent;
 /**
  * 用户登录
  * @author linzhenhuan
- *返回cookie sessionid等服务器信息，如何得到用户名和用户id呢？
+ *1\返回cookie sessionid等服务器信息
+ *2\通过/oa/message/message_move.jsp返回的html代码中定位用户id
+ *3\通过获取全行机构树 用户id定位用户名和所在的机构
  */
 public class Win_login {
 
