@@ -21,12 +21,18 @@ import enixlin.jrrc.net.http_request;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.security.auth.login.LoginContext;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -127,6 +133,26 @@ public class Win_login {
 
 		btnNewButton.setBounds(131, 153, 93, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ScriptEngineManager manager = new ScriptEngineManager();  
+				 ScriptEngine engine = manager.getEngineByName("javascript");
+				
+				 String script = "var obj = 'enixlin'";
+			        try {
+						engine.eval(script);
+					} catch (ScriptException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}   
+			        Object obj = engine.get("obj");   
+			        System.out.println(obj.toString());
+			}
+		});
+		btnNewButton_1.setBounds(234, 153, 93, 23);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 
 	private void login(URI url, ArrayList<BasicNameValuePair> params) {
