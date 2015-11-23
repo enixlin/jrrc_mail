@@ -33,7 +33,11 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-
+/**
+ * 用户登录
+ * @author linzhenhuan
+ *返回cookie sessionid等服务器信息，如何得到用户名和用户id呢？
+ */
 public class Win_login {
 
 	private JFrame frame;
